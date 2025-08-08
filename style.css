@@ -344,21 +344,19 @@ footer {
   overflow: hidden;
 }
 
+
+
+.image-container:hover {
+  box-shadow: 5px 5px 10px rgba(108, 8, 133, 0.238); /* Shadow effect on hover */
+    transition: transform 0.9s ease
+}
+
+
 .image-container img {
   width: 100%;
   height: auto;
   display: block;
-  transition: transform 0.8s ease;
-}
-
-.image-container:hover {
-  box-shadow: 0 20px 20px rgba(108, 8, 133, 0.238); /* Shadow effect on hover */
-}
-
-
-
-.image-container:hover img {
-  transform: scale(1.04);
+  transition: transform 0.9s ease;
 }
 
 .image-container:hover .image-caption {
