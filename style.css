@@ -106,12 +106,17 @@ main {
 /* Profile */
 .profile {
   text-align: left;
-  background-color: rgba(255, 255, 255, 0.773);
+  background-color:transparent;
   padding: 20px;
   max-width: 800px;
   margin: 20px auto;
-  overflow: auto;
+  flex-direction: row-reverse; /* Image on right, content on left */
+  align-items: flex-start; /* Align items to top */
+
 }
+
+
+
 
 .profile img {
   width: 250px;
@@ -121,6 +126,7 @@ main {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.671);
   transition: all 0.9s ease;
   border-radius: 10px; 
+  
 }
 
 .profile img:hover {
@@ -155,20 +161,29 @@ nav ul li { margin: 0 20px; }
 
 nav ul li a {
   text-decoration: none;
-  color: #0073e6;
-  font-size: 18px;
-  transition: color 0.3s;
+  font-size: 20px;
+  transition: color 0.8s;
   cursor: pointer;
 }
 
 nav ul li a:hover { color: #000000; }
 
-hr.nav-divider {
-  width: 100%;
-  margin: 10px;
-  border: 0;
-  height: 1px;
-  background-color: #ccc;
+
+/* Add this to your existing CSS */
+#top-nav {
+  hr.nav-divider {
+    display: none;
+  }
+  
+  ul {
+    border: none;
+    border-bottom: none;
+    border-top: none;
+  }
+  
+  li {
+    border-bottom: none !important;
+  }
 }
 
 /* Projects */
@@ -198,6 +213,18 @@ hr.nav-divider {
   height: auto;
   max-height: 200px;
 }
+
+
+#top-nav {
+    background-color: transparent; /* Light gray background */
+    padding: 10px 0px; /* Add some vertical padding */
+    position: sticky; /* Optional: makes nav stick to top */
+    top: 0; /* Required for sticky positioning */
+    z-index: 1000; /* Ensures nav stays above other content */
+    box-shadow: 0 2px 5px rgba(18, 16, 16, 0.1); /* Optional subtle shadow */
+}
+
+
 
 #top-nav ul {
     list-style: none;
@@ -237,7 +264,7 @@ filter: invert(14%) sepia(88%) saturate(7483%) hue-rotate(276deg) brightness(78%
 
 /* Footer adjustments */
 footer {
-  background-color: #ffffff;
+  background-color: transparent;
   padding: 20px 0;
   position: static;
   width: 100%;
@@ -270,8 +297,8 @@ footer {
 }
 
 .social-icons img {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
 }
 
@@ -729,4 +756,8 @@ nav ul li {
         font-size: 14px; /* Slightly smaller text if needed */
     }
 }
+
+
+
+
 
