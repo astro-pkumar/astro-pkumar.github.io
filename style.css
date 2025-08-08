@@ -198,16 +198,25 @@ hr.nav-divider {
   height: auto;
   max-height: 200px;
 }
+
 #top-nav ul {
     list-style: none;
     padding: 0;
-    text-align: center;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
+
+
 #top-nav ul li {
-    display: inline;
-    margin: 0 20px;
-    
+    display: inline-block; /* Use inline-block instead of flex items */
+    margin: 0 10px; /* Adjust spacing as needed */
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 #top-nav a {
@@ -460,18 +469,29 @@ footer {
     left: 0;
 }
 
-@media (max-width: 768px) {
-    .contact-info {
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-    }
-    
-    .cv-header h1 {
-        font-size: 1.8rem;
-    }
+/* For all screen sizes including mobile */
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Allows items to wrap if needed */
 }
 
+nav ul li { 
+  margin: 0 10px; /* Reduced horizontal margin for mobile */
+}
+
+/* Adjust spacing for very small screens */
+@media (max-width: 480px) {
+  nav ul li {
+    margin: 0 8px; /* Even smaller margin for tiny screens */
+  }
+  
+  #top-nav a {
+    font-size: 14px; /* Slightly smaller font if needed */
+  }
+}
 
 /* Improved CV Item Styling */
 .cv-item {
@@ -661,3 +681,54 @@ footer {
         display: none !important;
     }
 }
+
+
+
+/* Add these to your existing CSS */
+
+/* Mobile-specific profile adjustments */
+@media (max-width: 768px) {
+  .profile {
+    padding: 15px;
+    margin: 10px auto;
+  text-align: center;
+  display: flex;
+    flex-direction: column;
+  }
+  
+  .profile img {
+    width: 200px;
+    float: none;
+    margin: 0 auto 20px auto;
+    order: -1; /* Move image to top on mobile */
+  }
+  
+  .profile h1 {
+    margin: 0 0 10px 0;
+    text-align: center;
+  }
+  
+  .profile p {
+    text-align: left;
+    margin-top: 15px;
+}
+  
+
+}
+
+
+
+@media (max-width: 768px) {
+    #top-nav ul {
+        flex-direction: row; /* Ensure horizontal layout */
+    }
+    
+    #top-nav ul li {
+        margin: 0 8px; /* Tighter spacing on mobile */
+    }
+    
+    #top-nav a {
+        font-size: 14px; /* Slightly smaller text if needed */
+    }
+}
+
