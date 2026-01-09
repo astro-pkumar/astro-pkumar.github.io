@@ -1,259 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prem Kumar - Curriculum Vitae</title>
+    <title>CV | Prem Kumar</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=SF+Mono&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <header>
-         <div id="top-nav">
-              <nav>
-                 <ul>
-                     <li><a href="index.html">home</a></li>
-                     <li><a href="publications.html">publications</a></li>
-                     <li><a href="cv.html">cv</a></li>
-                    <li><a href="photography.html">photography</a></li>
-                    <li><a href="junk.html">junk</a></li>
-
-                </ul>
-             </nav>
-             <hr class="nav-divider"> <!-- Horizontal line -->
-         </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">home</a></li>
+                <li><a href="publications.html">publications</a></li>
+                <li><a href="cv.html" class="active">cv</a></li>
+                <li><a href="photography.html">photography</a></li>
+                <li><a href="junk.html">junk</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        <div class="pdf-download-container">
-            <button id="download-pdf" class="pdf-download-btn">Download as PDF</button>
-            <span id="pdf-status" style="display: none;"></span>
-        </div>
-
-        <div class="cv-section">
-            <div class="cv-header">
-                <h1>Prem Kumar</h1>
-                <h2>Doctoral Student in Astrophysics</h2>
-                <div class="contact-info">
-                    <div class="contact-item">✉️ prem.kumar[at].univie.ac.at</div>
-                    <div class="contact-item">📍 Vienna, Austria</div>
-                </div>
+        <div class="cv-container">
+            <div class="pdf-download-container no-print">
+                <button id="download-pdf" class="btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download as PDF
+                </button>
+                <span id="pdf-status" style="margin-left: 10px; font-size: 0.9em; display: none;"></span>
             </div>
 
-            <h3 class="section-title">EDUCATION</h3>
-            
-            <div class="cv-item">
-                <div class="cv-left">
-                    <h4>University of Vienna</h4>
-                    <p>PhD in Astrophysics</p>
+            <div class="cv-section" id="cv-content">
+                <div class="cv-header">
+                    <h1>Prem Kumar</h1>
+                    <h2>Doctoral Student in Astrophysics</h2>
+                    <div class="contact-info">
+                        <div class="contact-item">✉️ prem.kumar@univie.ac.at</div>
+                        <div class="contact-item">📍 Vienna, Austria</div>
+                    </div>
                 </div>
-                <div class="cv-right">
-                    <p>Vienna, Austria</p>
-                    <p class="cv-date">May 2024 – Current</p>
+
+                <h3 class="section-title">EDUCATION</h3>
+
+                <div class="cv-item">
+                    <div class="cv-left">
+                        <h4>University of Vienna</h4>
+                        <p>PhD in Astrophysics</p>
+                    </div>
+                    <div class="cv-right">
+                        <p>Vienna, Austria</p>
+                        <p class="cv-date">May 2024 – Current</p>
+                    </div>
                 </div>
+
+                <div class="cv-item">
+                    <div class="cv-left">
+                        <h4>University of Potsdam</h4>
+                        <p>Master of Sciences in Astrophysics</p>
+                    </div>
+                    <div class="cv-right">
+                        <p>Potsdam, Germany</p>
+                        <p class="cv-date">April 2021 – March 2024</p>
+                    </div>
+                </div>
+
+                <div class="cv-item">
+                    <div class="cv-left">
+                        <h4>Institute of Space Technology</h4>
+                        <p>Bachelor of Sciences in Space Sciences</p>
+                    </div>
+                    <div class="cv-right">
+                        <p>Islamabad, Pakistan</p>
+                        <p class="cv-date">Sep 2015 – Sep 2020</p>
+                    </div>
+                </div>
+
+                <div class="cv-item">
+                    <div class="cv-left">
+                        <h4>University of Missouri – Saint Louis</h4>
+                        <p>Exchange Program</p>
+                    </div>
+                    <div class="cv-right">
+                        <p>Saint Louis, USA</p>
+                        <p class="cv-date">Oct 2018 – Dec 2018</p>
+                    </div>
+                </div>
+
+                <h3 class="section-title">WORK EXPERIENCE</h3>
+                <div class="cv-item">
+                    <div class="cv-left">
+                        <h4>Leibniz-Institute for Astrophysics (AIP)</h4>
+                        <p>Student Assistant</p>
+                        <ul class="bullet-list">
+                            <li>Collaborated on <em>4MOST</em> commissioning, using Python OOP, scientific computing,
+                                and GitLab for version control.</li>
+                        </ul>
+                    </div>
+                    <div class="cv-right">
+                        <p>Potsdam, Germany</p>
+                        <p class="cv-date">Oct 2023 – Dec 2023</p>
+                    </div>
+                </div>
+
+                <h3 class="section-title">TEACHING EXPERIENCE</h3>
+                <div class="cv-item">
+                    <div class="cv-left">
+                        <h4>University of Vienna</h4>
+                        <p>Advanced Topics in Extragalactic Astrophysics (Seminar Course)</p>
+                    </div>
+                    <div class="cv-right">
+                        <p>Vienna, Austria</p>
+                        <p class="cv-date">Winter Semester 2025</p>
+                    </div>
+                </div>
+
+                <h3 class="section-title">SKILLS</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <span class="skill-category">Technical Languages</span>
+                        <div class="skill-value">Python, C++, Fortran, LaTeX</div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-category">Packages & Tools</span>
+                        <div class="skill-value">NumPy, Matplotlib, SciPy, Astropy, Galpy</div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-category">Version Control</span>
+                        <div class="skill-value">Git (GitHub, GitLab)</div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-category">Operating Systems</span>
+                        <div class="skill-value">Windows, Unix/Linux</div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-category">Astro Software</span>
+                        <div class="skill-value">Astrometrica, TOPCAT, SAOImageDS9</div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-category">Languages</span>
+                        <div class="skill-value">English, Urdu, Sindhi</div>
+                    </div>
+                </div>
+
+                <h3 class="section-title">PUBLICATIONS</h3>
+                <ul class="bullet-list">
+                    <li>
+                        <strong>Kumar, P.</strong>, Pawlowski, M. S., Kanehisa, K. J., Li, P., Júlio, M. P., & Taibi, S.
+                        (2025).
+                        <em>The effect of measurement uncertainties on the inferred stability of planes of satellite
+                            galaxies.</em>
+                        <a href="https://doi.org/10.1051/0004-6361/202453087" target="_blank" rel="noopener noreferrer"
+                            style="color: var(--primary-color);">
+                            Astronomy & Astrophysics, 699, A363
+                        </a>.
+                    </li>
+                </ul>
+
+                <h3 class="section-title">HONORS & AWARDS</h3>
+                <div class="cv-item">
+                    <div class="cv-left">
+                        <h4>Institute of Space Technology</h4>
+                        <p>Academic Excellence Award</p>
+                        <ul class="bullet-list">
+                            <li>Received two gold medals for excelling academically.</li>
+                        </ul>
+                    </div>
+                    <div class="cv-right">
+                        <p>Islamabad, Pakistan</p>
+                        <p class="cv-date">Sep 2022 – Sep 2020</p>
+                    </div>
+                </div>
+
+                <div class="cv-item">
+                    <div class="cv-left">
+                        <h4>Cultural Exchange Program Scholarship</h4>
+                        <p>Global UGRAD Program</p>
+                        <ul class="bullet-list">
+                            <li>Awarded scholarship to study for a semester at a U.S. university.</li>
+                        </ul>
+                    </div>
+                    <div class="cv-right">
+                        <p>Saint Louis, USA</p>
+                        <p class="cv-date">Sep 2021</p>
+                    </div>
+                </div>
+
+                <h3 class="section-title">CONFERENCES & SCHOOLS</h3>
+                <div class="cv-item">
+                    <div class="cv-left">
+                        <h4>Galaxy Formation in the Cosmic Web: Bridging Simulations and Observations</h4>
+                        <p>The 12th Sino-German Meeting</p>
+                    </div>
+                    <div class="cv-right">
+                        <p>Chengdu, China</p>
+                        <p class="cv-date">2025</p>
+                    </div>
+                </div>
+
+                <div class="cv-item">
+                    <div class="cv-left">
+                        <h4>Galaxy Formation + AGORA in Asia 2025 Workshop</h4>
+                        <p>Flash talk: <em>Connecting Present-day Galaxies and their Progenitors with
+                                Population-Dynamics</em></p>
+                    </div>
+                    <div class="cv-right">
+                        <p>Osaka, Japan</p>
+                        <p class="cv-date">May 26 - 30, 2025</p>
+                    </div>
+                </div>
+
+                <div class="cv-item">
+                    <div class="cv-left">
+                        <h4>XXXV Canary Islands Winter School of Astrophysics</h4>
+                        <p>Baryonic Cycle Across Space & Time</p>
+                    </div>
+                    <div class="cv-right">
+                        <p>Tenerife, Spain</p>
+                        <p class="cv-date">8-17 Oct, 2024</p>
+                    </div>
+                </div>
+
             </div>
-
-            <div class="cv-item">
-                <div class="cv-left">
-                    <h4>University of Potsdam</h4>
-                    <p>Master of Sciences in Astrophysics</p>
-                </div>
-                <div class="cv-right">
-                    <p>Potsdam, Germany</p>
-                    <p class="cv-date">April 2021 – March 2024</p>
-                </div>
-            </div>
-
-            <div class="cv-item">
-                <div class="cv-left">
-                    <h4>Institute of Space Technology</h4>
-                    <p>Bachelor of Sciences in Space Sciences</p>
-                </div>
-                <div class="cv-right">
-                    <p>Islamabad, Pakistan</p>
-                    <p class="cv-date">September 2015 – September 2020</p>
-                </div>
-            </div>
-
-            <div class="cv-item">
-                <div class="cv-left">
-                    <h4>University of Missouri – Saint Louis</h4>
-                    <p>Exchange Program</p>
-                </div>
-                <div class="cv-right">
-                    <p>Saint Louis, United States</p>
-                    <p class="cv-date">October 2018 – December 2018</p>
-                </div>
-            </div>
-
-            <h3 class="section-title">WORK EXPERIENCE</h3>
-            <div class="cv-item">
-                <div class="cv-left">
-                    <h4>Leibniz-Institute for Astrophysics (AIP)</h4>
-                    <p>Student Assistant</p>
-                    <ul class="bullet-list">
-                        <li>Collaborated on <em>4MOST</em> commissioning, using Python OOP, scientific computing, and GitLab for version control.</li>
-                    </ul>
-                </div>
-                <div class="cv-right">
-                    <p>Potsdam, Germany</p>
-                    <p class="cv-date">October 2023 – December 2023</p>
-                </div>
-            </div>
-
-            <h3 class="section-title">SKILLS</h3>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-category">Technical Languages:</div>
-                    <div class="skill-value">Python, C++, Fortran, LaTeX</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-category">Packages & Tools:</div>
-                    <div class="skill-value">NumPy, Matplotlib, SciPy, Astropy, Galpy</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-category">Version Control:</div>
-                    <div class="skill-value">Git (-hub, -lab)</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-category">Operating System:</div>
-                    <div class="skill-value">Windows, Unix based OS</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-category">Astro Software:</div>
-                    <div class="skill-value">Astrometrica, TOPCAT, SAOImageDS9</div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-category">Languages:</div>
-                    <div class="skill-value">English, Urdu, Sindhi</div>
-                </div>
-            </div>
-
-            <h3 class="section-title">PUBLICATIONS</h3>
-            <ul class="bullet-list">
-                <li>
-                    <strong>Kumar, P.</strong>, Pawlowski, M. S., Kanehisa, K. J., Li, P., Júlio, M. P., & Taibi, S. (2025). 
-                    <em>The effect of measurement uncertainties on the inferred stability of planes of satellite galaxies.</em> 
-                    <a href="https://doi.org/10.1051/0004-6361/202453087" target="_blank" rel="noopener noreferrer" style="color: purple;">
-                    Astronomy & Astrophysics, 699, A363
-                    </a>.
-                </li>
-            </ul>
-
-            <h3 class="section-title">HONORS & AWARDS</h3>
-            <div class="cv-item">
-                <div class="cv-left">
-                    <h4>Institute of Space Technology</h4>
-                    <p>Academic Excellence Award</p>
-                    <ul class="bullet-list">
-                        <li>Received two gold medals for excelling academically.</li>
-                    </ul>
-                </div>
-                <div class="cv-right">
-                    <p>Islamabad, Pakistan</p>
-                    <p class="cv-date">September 2022 – September 2020</p>
-                </div>
-            </div>
-
-            <div class="cv-item">
-                <div class="cv-left">
-                    <h4>Grantee of Cultural Exchange Program Scholarship</h4>
-                    <p>Global UGRAD Program</p>
-                    <ul class="bullet-list">
-                        <li>Awarded the Cultural Exchange Program Scholarship, providing the opportunity to study for a semester at a U.S. university, fostering cross-cultural exchange and academic enrichment.</li>
-                    </ul>
-                </div>
-                <div class="cv-right">
-                    <p>Saint Louis, United States</p>
-                    <p class="cv-date">September 2021</p>
-                </div>
-            </div>
-
-            <h3 class="section-title">CONFERENCES & SCHOOLS ATTENDED</h3>
-            <div class="cv-item">
-                <div class="cv-left">
-                    <h4>Galaxy Formation + AGORA in Asia 2025 Workshop</h4>
-                    <p><span class="conference-type">Flash talk</span>: 
-                    <span class="conference-presentation">Connecting Present-day Galaxies and their Progenitors with Population-Dynamics</span></p>
-                </div>
-                <div class="cv-right">
-                    <p>Osaka, Japan</p>
-                    <p class="cv-date">May 26 - 30, 2025</p>
-                </div>
-            </div>
-
-
-            <div class="cv-item">
-                <div class="cv-left">
-                    <h4>XXXV Canary Islands Winter School of Astrophysics: Baryonic Cycle Across Space & Time </h4>
-                </div>
-                <div class="cv-right">
-                    <p>La Laguna, Tenerife, Spain</p>
-                    <p class="cv-date">8-17 October, 2024</p>
-                </div>
-            </div>
-
         </div>
     </main>
 
     <footer>
         <div class="social-icons">
-            <a href="https://www.linkedin.com/in/pkprem26/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/pkprem26/" target="_blank" rel="noopener noreferrer"
+                class="social-icon">
                 <img src="images/linkedin_logo.svg" alt="LinkedIn">
             </a>
-            <a href="https://github.com/astro-pkumar" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/astro-pkumar" target="_blank" rel="noopener noreferrer" class="social-icon">
                 <img src="images/github_logo.svg" alt="GitHub">
             </a>
-            <a href="https://orcid.org/0009-0009-7182-2742" target="_blank" rel="noopener noreferrer">
+            <a href="https://orcid.org/0009-0009-7182-2742" target="_blank" rel="noopener noreferrer"
+                class="social-icon">
                 <img src="images/orcid_logo.svg" alt="ORCID">
             </a>
-            <a href="http://x.com/pkprem26" target="_blank" rel="noopener noreferrer">
+            <a href="http://x.com/pkprem26" target="_blank" rel="noopener noreferrer" class="social-icon">
                 <img src="images/twitter_logo.svg" alt="Twitter">
             </a>
-            <a href="mailto:prem.kumar@univie.ac.at" target="_blank" rel="noopener noreferrer">
+            <a href="mailto:prem.kumar@univie.ac.at" target="_blank" rel="noopener noreferrer" class="social-icon">
                 <img src="images/email_logo.svg" alt="Email">
             </a>
         </div>
     </footer>
 
+    <!-- PDF Generation Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const downloadBtn = document.getElementById('download-pdf');
             const pdfStatus = document.getElementById('pdf-status');
-            
+
             if (downloadBtn) {
                 downloadBtn.addEventListener('click', generatePDF);
             }
-            
+
             function generatePDF() {
-                const originalText = downloadBtn.textContent;
-                pdfStatus.textContent = 'Generating PDF...';
+                const originalText = downloadBtn.innerHTML;
+                pdfStatus.textContent = 'Generating...';
+                pdfStatus.style.display = 'inline';
                 downloadBtn.disabled = true;
-                
-                const script = document.createElement('script');
-                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-                script.onload = function() {
-                    const element = document.querySelector('.cv-section');
-                    const opt = {
-                        margin: 10,
-                        filename: 'Prem_Kumar_CV.pdf',
-                        image: { type: 'jpeg', quality: 0.98 },
-                        html2canvas: { 
-                            scale: 2,
-                            logging: true,
-                            useCORS: true
-                        },
-                        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-                    };
-                    
-                    html2pdf().from(element).set(opt).save().then(() => {
-                        downloadBtn.textContent = originalText;
-                        downloadBtn.disabled = false;
-                    });
+
+                const element = document.getElementById('cv-content');
+                const opt = {
+                    margin: [10, 10],
+                    filename: 'Prem_Kumar_CV.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: {
+                        scale: 2,
+                        logging: false,
+                        useCORS: true
+                    },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
                 };
-                document.head.appendChild(script);
+
+                html2pdf().from(element).set(opt).save().then(() => {
+                    downloadBtn.innerHTML = originalText;
+                    downloadBtn.disabled = false;
+                    pdfStatus.style.display = 'none';
+                });
             }
         });
     </script>
 </body>
+
 </html>
