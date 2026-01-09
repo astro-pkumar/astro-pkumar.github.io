@@ -1,84 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta charset="UTF-8">
-     <title>Prem Kumar</title>
-     <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prem Kumar | Astrophysicist</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=SF+Mono&display=swap" rel="stylesheet">
 </head>
-
-
-
-
 <body>
     <header>
-         <div id="top-nav">
-              <nav>
-                 <ul>
-                     <li><a href="index.html">home</a></li>
-                     <li><a href="publications.html">publications</a></li>
-                     <li><a href="cv.html">cv</a></li>
-                    <li><a href="photography.html">photography</a></li>
-                    <li><a href="junk.html">junk</a></li>
-                 </ul>
-             </nav>
-             <hr class="nav-divider"> <!-- Horizontal line -->
-         </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">home</a></li>
+                <li><a href="publications.html">publications</a></li>
+                <li><a href="cv.html">cv</a></li>
+                <li><a href="photography.html">photography</a></li>
+                <li><a href="junk.html">junk</a></li>
+            </ul>
+        </nav>
     </header>
 
-        
-
     <main>
-        <div class="profile">
-            <img src="images/profile_photo.jpeg" alt="Prem Kumar">
-            <h1>
-            <span style="color: #000000;">Prem</span> 
-            <span style="color: #000000; font-weight: normal;">Kumar</span>
-            </h1>
-            <p> 
-                <br>
-                <div style="text-align: left;">
-                I am a Doctorate candidate in Astrophysics at the <strong>University of Vienna</strong>, working in the 
-                <a href="http://dynamics.univie.ac.at" style="color:purple;" target="_blank" rel="noopener noreferrer">
-                Dynamics of Stellar Systems research group</a> under the supervision of Dr. Glenn van de Ven and Dr. Alina Böcker.
-                    <br><br>
-                    My research interests lie in galaxy formation and evolution, and dynamical modelling. My PhD project focuses on the evolution of the orbital distribution of galaxies from the epoch when the Universe was roughly half its current age up until today. To investigate this, I work extensively with cosmological simulations such as 
-                    <a href="https://www.tng-project.org" style="color:purple;" target="_blank" rel="noopener noreferrer">IllustrisTNG</a> 
-                    and high-resolution observational data from the 
-                    <a href="https://ui.adsabs.harvard.edu/abs/2021essp.confE..42V/abstract" style="color:purple;" target="_blank" rel="noopener noreferrer">LEGA-C survey</a>.
-                </div>
+        <section class="profile">
+            <div class="profile-image-container">
+                <img src="images/profile_photo.jpeg" alt="Prem Kumar" class="profile-image">
+            </div>
+            
+            <div class="profile-content">
+                <h1 class="name-title">
+                    <span class="name-highlight">Prem</span>
+                    <span class="name-normal">Kumar</span>
+                </h1>
                 
-        </div>
-        <br><br>
+                <div class="intro-text">
+                    <p>
+                        I am a Doctorate candidate in Astrophysics at the <strong>University of Vienna</strong>, working in the 
+                        <a href="http://dynamics.univie.ac.at" target="_blank" rel="noopener noreferrer">Dynamics of Stellar Systems research group</a> 
+                        under the supervision of Dr. Glenn van de Ven and Dr. Alina Böcker.
+                    </p>
+                    <br>
+                    <p>
+                        My research interests lie in galaxy formation and evolution, and dynamical modelling. My PhD project focuses on the evolution of the orbital distribution of galaxies from the epoch when the Universe was roughly half its current age up until today. To investigate this, I work extensively with cosmological simulations such as 
+                        <a href="https://www.tng-project.org" target="_blank" rel="noopener noreferrer">IllustrisTNG</a> 
+                        and high-resolution observational data from the 
+                        <a href="https://ui.adsabs.harvard.edu/abs/2021essp.confE..42V/abstract" target="_blank" rel="noopener noreferrer">LEGA-C survey</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    
-
-    <!-- Social Icons Section -->
     <footer>
         <div class="social-icons">
-            <a href="https://www.linkedin.com/in/pkprem26/" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/pkprem26/" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn">
                 <img src="images/linkedin_logo.svg" alt="LinkedIn" />
             </a>
-            <a href="https://github.com/astro-pkumar" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/astro-pkumar" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub">
                 <img src="images/github_logo.svg" alt="GitHub" />
             </a>
-            <a href="https://orcid.org/0009-0009-7182-2742" target="_blank" rel="noopener noreferrer">
+            <a href="https://orcid.org/0009-0009-7182-2742" target="_blank" rel="noopener noreferrer" class="social-icon" title="ORCID">
                 <img src="images/orcid_logo.svg" alt="ORCID" />
             </a>
-            <a href="http://x.com/pkprem26" target="_blank" rel="noopener noreferrer">
+            <a href="http://x.com/pkprem26" target="_blank" rel="noopener noreferrer" class="social-icon" title="Twitter/X">
                 <img src="images/twitter_logo.svg" alt="Twitter" />
             </a>
-            <a href="mailto:prem.kumar@univie.ac.at" target="_blank" rel="noopener noreferrer">
+            <a href="mailto:prem.kumar@univie.ac.at" target="_blank" rel="noopener noreferrer" class="social-icon" title="Email">
                 <img src="images/email_logo.svg" alt="Email" />
             </a>
         </div>
+        <p style="margin-top: 1rem; font-size: 0.8rem; color: #888;">&copy; 2024 Prem Kumar. All rights reserved.</p>
     </footer>
-
-    <script>
-
-
-
-        
-    </script>
 </body>
 </html>
