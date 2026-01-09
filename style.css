@@ -1,763 +1,957 @@
+/* 
+====================================================================
+   Prem Kumar - Personal Website CSS
+   Consolidated Stylesheet
+====================================================================
+*/
 
-
-
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
-
-/*==================== VARIABLES CSS ====================*/
+/* ------------------------------------------------------------------
+   1. VARIABLES & THEME SETUP
+------------------------------------------------------------------ */
 :root {
-  --header-height: 3rem;
+  /* Colors */
+  --primary-color: #661960;
+  /* Deep Purple from original design */
+  --primary-light: #a82d7b;
+  --primary-dark: #4b0958;
+  --accent-color: #0077b5;
+  /* LinkedIn Blue-ish for accents */
 
-  /*========== Colors ==========*/
-  --hue-color: 1;
-  --first-color: #000000;
-  --first-color-second: #e27777;
-  --first-color-alt: #d16767;
-  --first-color-lighter: #ffd6d6;
-  --title-color: #272525;
-  --text-color: #060606;
-  --text-color-light: #a6a3a3;
-  --input-color: #f9e8e8;
-  --body-color: #ffffff; 
-  --container-color: #792222;
-  --scroll-bar-color: #e6e1e1;
-  --scroll-thumb-color: #d1cbcb;
+  --bg-color: #ffffff;
+  --bg-secondary: #f9f9f9;
+  /* Light gray for sections */
+  --text-main: #222222;
+  --text-muted: #666666;
+  --text-light: #ffffff;
 
-  /*========== Typography ==========*/
-  --body-font: 'Poppins', sans-serif;
-  --big-font-size: 2rem;
-  --h1-font-size: 1.5rem;
-  --h2-font-size: 1.25rem;
-  --h3-font-size: 1.125rem;
-  --normal-font-size: .938rem;
-  --small-font-size: .813rem;
-  --smaller-font-size: .75rem;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
 
-  /*========== Font weight ==========*/
-  --font-medium: 500;
-  --font-semi-bold: 600;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
 
-  /*========== Margins ==========*/
-  --mb-0-25: .25rem;
-  --mb-0-5: .5rem;
-  --mb-0-75: .75rem;
-  --mb-1: 1rem;
-  --mb-1-5: 1.5rem;
-  --mb-2: 2rem;
-  --mb-2-5: 2.5rem;
-  --mb-3: 3rem;
-
-  /*========== z-index ==========*/
-  --z-tooltip: 10;
-  --z-fixed: 100;
-  --z-modal: 1000;
+  /* Typography */
+  --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', Consolas, "Liberation Mono", Menlo, monospace;
 }
 
-@media (max-width: 768px) {
-  main {
-    padding-top: 80px;
-    padding-bottom: 30px;
-    min-height: calc(100vh - 110px);
-  }
-  
-  footer {
-    padding: 8px;
-  }
-}
-
-@media screen and (min-width: 968px) {
-  :root {
-    --big-font-size: 3rem;
-    --h1-font-size: 2.25rem;
-    --h2-font-size: 1.5rem;
-    --h3-font-size: 1.25rem;
-    --normal-font-size: 1rem;
-    --small-font-size: .875rem;
-    --smaller-font-size: .813rem;
-  }
-}
-
-/*==================== BASE ====================*/
+/* ------------------------------------------------------------------
+   2. RESET & BASE STYLES
+------------------------------------------------------------------ */
 * {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
 
 body {
-  font-size: var(--normal-font-size);
-  margin: 0;
-  padding: 0;
-  font-family: var(--body-font);
+  font-family: var(--font-main);
+  color: var(--text-main);
+  background-color: var(--bg-color);
+  line-height: 1.6;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ------------------------------------------------------------------
+   3. LAYOUT UTILITIES
+------------------------------------------------------------------ */
 main {
   flex: 1;
-  overflow-y: visible;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  /* Add top padding to account for fixed header */
   padding-top: 100px;
-  padding-bottom: 80px;
-  min-height: calc(100vh - 160px);
 }
 
-/* Profile */
-.profile {
-  text-align: left;
-  background-color:transparent;
-  padding: 20px;
-  max-width: 800px;
-  margin: 20px auto;
-  flex-direction: row-reverse; /* Image on right, content on left */
-  align-items: flex-start; /* Align items to top */
-
+section {
+  margin-bottom: 3rem;
 }
 
-
-
-
-.profile img {
-  width: 250px;
-  height: auto;
-  float: right;
-  margin: 0 0 10px 40px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.671);
-  transition: all 0.9s ease;
-  border-radius: 10px; 
-  
-}
-
-.profile img:hover {
-  box-shadow: 0 8px 16px rgba(75, 9, 88, 0.608);
-}
-
-.profile h1 {
-  margin: -10px 0 -10px 0;
-}
-
-.profile h1 span:first-child { font-weight: bold; }
-
-.profile p {
-  margin-top: 10px;
-  margin-bottom: 0;
-}
-
-/* Navigation */
-nav {
-  text-align: center;
-  padding: 3px 0;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-}
-
-nav ul li { margin: 0 20px; }
-
-nav ul li a {
-  text-decoration: none;
-  font-size: 20px;
-  transition: color 0.8s;
-  cursor: pointer;
-}
-
-nav ul li a:hover { color: #000000; }
-
-
-/* Add this to your existing CSS */
-#top-nav {
-  hr.nav-divider {
-    display: none;
-  }
-  
-  ul {
-    border: none;
-    border-bottom: none;
-    border-top: none;
-  }
-  
-  li {
-    border-bottom: none !important;
-  }
-}
-
-/* Projects */
-#projects {
-  padding: 20px;
-  background-color: #f0f0f0;
-  overflow: auto;
-  white-space: nowrap;
-}
-
-.project-card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin: 10px;
-  display: inline-block;
-  width: 300px;
-  text-align: center;
-  vertical-align: top;
-  white-space: normal;
-}
-
-.project-card img {
-  width: 100%;
-  height: auto;
-  max-height: 200px;
-}
-
-
-#top-nav {
-    background-color: transparent; /* Light gray background */
-    padding: 10px 0px; /* Add some vertical padding */
-    position: sticky; /* Optional: makes nav stick to top */
-    top: 0; /* Required for sticky positioning */
-    z-index: 1000; /* Ensures nav stays above other content */
-    box-shadow: 0 2px 5px rgba(18, 16, 16, 0.1); /* Optional subtle shadow */
-}
-
-
-
-#top-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap; /* Prevent wrapping */
-    white-space: nowrap; /* Prevent text wrapping */
-    overflow-x: auto; /* Enable horizontal scrolling if needed */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-}
-
-
-
-#top-nav ul li {
-    display: inline-block; /* Use inline-block instead of flex items */
-    margin: 0 10px; /* Adjust spacing as needed */
-    white-space: nowrap; /* Prevent text wrapping */
-}
-
-#top-nav a {
-    text-decoration: none;
-    color: #000000; /* default black */
-    font-weight: normal; /* Removes bold */
-    filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
-}
-
-
-#top-nav a:hover {
-filter: invert(14%) sepia(88%) saturate(7483%) hue-rotate(276deg) brightness(78%) contrast(60%);
-}
-
-
-
-
-
-/* Footer adjustments */
-footer {
-  background-color: transparent;
-  padding: 20px 0;
-  position: static;
-  width: 100%;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  #main-content { margin-top: 50px; }
-  #top-nav ul { text-align: center; padding-left: 0; }
-  #top-nav li { display: block; margin: 10px 0; }
-  #top-nav a { font-size: 16px; }
-}
-
-@media (max-width: 480px) {
-  body { font-size: 12px; }
-  #top-nav a { font-size: 14px; }
-}
-
-/* Social Icons */
-.social-icons {
-  text-align: center;
-  margin: 40px 0;
-  padding: 20px 0;
-}
-
-.social-icons a {
-  margin: 0 10px;
-  display: inline-block;
-  transition: all 1s ease;
-}
-
-.social-icons img {
-  width: 40px;
-  height: 40px;
-  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
-}
-
-.social-icons a:hover img {
-  filter: invert(14%) sepia(88%) saturate(7483%) hue-rotate(276deg) brightness(78%) contrast(60%);
-  transform: scale(1.15);
-}
-
-/* Image Grid */
-
-
-
-
-@media (max-width: 600px) {
-  .image-grid {
-    grid-template-columns: fr;
-    margin-bottom: 30px;
-  }
-  
-  main {
-    padding-bottom: 40px;
-    min-height: calc(100vh - 140px);
-  }
-}
-/* CV Section */
-.cv-container {
-  max-width: 800px;
-  margin: 2rem auto;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 0 1rem;
 }
 
-.pdf-viewer {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-top: 1rem;
-}
-
-.cv-download {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #0077b5;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  margin-top: 1rem;
-  transition: background-color 0.3s;
-}
-
-.cv-download:hover {
-  background-color: #005582;
-}
-
-
-
-
-
-/* Image Grid */
-.image-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 800px;
-  margin: 0 auto 40px;
-  padding: 20px;
-}
-
-
-.image-container {
-  position: relative;
-  overflow: hidden;
-}
-
-
-
-.image-container:hover {
-  box-shadow: 5px 5px 10px rgba(108, 8, 133, 0.238); /* Shadow effect on hover */
-    transition: transform 0.9s ease
-}
-
-
-.image-container img {
+/* ------------------------------------------------------------------
+   4. NAVIGATION (Sticky, Glassmorphism)
+------------------------------------------------------------------ */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.9s ease;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
 }
 
-.image-container:hover .image-caption {
-  opacity: 1;
+nav {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.image-caption {
-  position: absolute;
-  bottom: 0px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+nav a {
+  font-weight: 500;
   font-size: 1rem;
-  text-shadow: 2px 2px 5px black;
-  padding: 5px 10px;
-  border-radius: 4px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  white-space: nowrap;  /* Prevent line breaks */
+  color: var(--text-main);
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding: 0.5rem 0;
 }
 
+/* Nav Link Hover Effect */
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--primary-color);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
 
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
 
+nav a:hover,
+nav a.active {
+  color: var(--primary-color);
+}
 
-/* Additional CV-specific styles */
-.cv-section {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+/* Mobile Nav */
+@media (max-width: 768px) {
+  nav ul {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+  }
+}
+
+/* ------------------------------------------------------------------
+   5. HERO & PROFILE SECTION
+------------------------------------------------------------------ */
+.profile {
+  display: flex;
+  flex-direction: row-reverse;
+  /* Image on right */
+  align-items: flex-start;
+  gap: 3rem;
+  padding: 2rem 0;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.profile-content {
+  flex: 1;
+}
+
+.profile-image-container {
+  flex-shrink: 0;
+  width: 280px;
+}
+
+.profile-image {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 4px solid #fff;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.profile-image:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(108, 25, 96, 0.2);
+}
+
+h1.name-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.name-highlight {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.name-normal {
+  font-weight: 400;
+  color: var(--text-main);
+}
+
+.intro-text {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+  text-align: justify;
+}
+
+.intro-text a {
+  color: var(--primary-color);
+  font-weight: 500;
+  border-bottom: 1px dotted var(--primary-color);
+}
+
+.intro-text a:hover {
+  border-bottom-style: solid;
+}
+
+@media (max-width: 768px) {
+  .profile {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .profile-image-container {
+    width: 200px;
+  }
+
+  .intro-text {
+    text-align: center;
+  }
+}
+
+/* ------------------------------------------------------------------
+   6. FOOTER & SOCIAL
+------------------------------------------------------------------ */
+footer {
+  margin-top: auto;
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-icon {
+  display: inline-flex;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+
+.social-icon img {
+  width: 32px;
+  height: 32px;
+  filter: grayscale(100%) opacity(0.7);
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover img {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.2);
+}
+
+/* ------------------------------------------------------------------
+   7. CV PAGE STYLES
+------------------------------------------------------------------ */
+.cv-container {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .cv-header {
-    text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 20px;
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #eee;
 }
 
 .cv-header h1 {
-    font-size: 2.2rem;
-    margin-bottom: 5px;
-    color: var(--title-color);
+  font-size: 2.5rem;
+  color: var(--text-main);
 }
 
 .cv-header h2 {
-    font-size: 1.2rem;
-    color: var(--text-color-light);
-    font-weight: normal;
-    margin-bottom: 15px;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
 }
 
 .contact-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 15px;
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
 }
 
 .section-title {
-    font-size: 1.5rem;
-    color: var(--title-color);
-    margin: 25px 0 15px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 5px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 2.5rem 0 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #eee;
+  display: inline-block;
 }
 
-.profile-summary {
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.research-interests {
-    margin-bottom: 20px;
-}
-
-.interest-category {
-    margin-bottom: 15px;
-}
-
-.interest-category h4 {
-    margin-bottom: 8px;
-    font-size: 1.1rem;
-}
-
-.interest-items {
-    list-style-type: none;
-    padding-left: 20px;
-}
-
-.interest-items li {
-    position: relative;
-    margin-bottom: 5px;
-    padding-left: 15px;
-}
-
-.interest-items li:before {
-    content: "○";
-    position: absolute;
-    left: 0;
-}
-
-/* For all screen sizes including mobile */
-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap; /* Allows items to wrap if needed */
-}
-
-nav ul li { 
-  margin: 0 10px; /* Reduced horizontal margin for mobile */
-}
-
-/* Adjust spacing for very small screens */
-@media (max-width: 480px) {
-  nav ul li {
-    margin: 0 8px; /* Even smaller margin for tiny screens */
-  }
-  
-  #top-nav a {
-    font-size: 14px; /* Slightly smaller font if needed */
-  }
-}
-
-/* Improved CV Item Styling */
 .cv-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 2rem;
 }
 
 .cv-left {
-    flex: 1;
-    min-width: 60%;
-    padding-right: 20px;
+  flex: 1;
+}
+
+.cv-left h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.cv-left p {
+  color: var(--text-main);
 }
 
 .cv-right {
-    text-align: right;
-    min-width: 150px;
-}
-
-.cv-item h4 {
-    margin-bottom: 5px;
-    font-size: 1.1em;
-    color: var(--title-color);
-}
-
-.cv-item p {
-    margin: 3px 0;
-    color: var(--text-color);
-    line-height: 1.4;
-    font-size: 0.95em;
+  text-align: right;
+  min-width: 140px;
 }
 
 .cv-date {
-    font-style: italic;
-    color: var(--text-color-light);
-    font-size: 0.9em;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
 }
 
-/* General Bullet List Styling */
 .bullet-list {
-    margin: 10px 0 0 0;
-    padding-left: 20px;
-    list-style-type: none;
+  list-style: none;
+  /* Custom bullets */
+  margin-top: 0.5rem;
 }
 
 .bullet-list li {
-    position: relative;
-    margin-bottom: 8px;
-    font-size: 0.95em;
-    color: var(--text-color);
-    line-height: 1.5;
-    padding-left: 15px;
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
 }
 
 .bullet-list li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: var(--title-color);
-    font-weight: bold;
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
 }
 
-/* For nested bullet lists */
-.bullet-list .bullet-list {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding-left: 15px;
-}
-
-@media (max-width: 600px) {
-    .cv-item {
-        flex-direction: column;
-    }
-    
-    .cv-right {
-        text-align: left;
-        margin-top: 5px;
-    }
-}
-
-
-/* Skills Grid Layout */
+/* Skills Grid */
 .skills-grid {
-    display: grid;
-    grid-template-columns: max-content auto;
-    gap: 5px 70px;
-    align-items: baseline;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
 }
 
 .skill-item {
-    display: contents; /* Makes children participate in grid */
+  background: var(--bg-secondary);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .skill-category {
-    font-weight: var(--font-semi-bold);
-    color: var(--title-color);
-    white-space: nowrap;
-    padding-right: 10px;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin-bottom: 0.25rem;
+  display: block;
 }
 
 .skill-value {
-    color: var(--text-color);
-    text-align: left;
+  color: var(--text-muted);
+  font-size: 0.95rem;
 }
 
 @media (max-width: 600px) {
-    .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 8px;
-    }
-    
-    .skill-category {
-        white-space: normal;
-        padding-bottom: 2px;
-    }
-    
-    .skill-category::after {
-        content: ":";
-    }
-}
-
-
-/* Conferences & Schools Specific Styling */
-.conference-type {
-    font-style: italic;
-    color: var(--text-color-light);
-    font-size: 0.9em;
-    margin-left: 5px;
-}
-
-.conference-presentation {
-    font-weight: var(--font-medium);
-    color: var(--first-color);
-}
-
-@media (max-width: 600px) {
-    .conference-type {
-        display: block;
-        margin-left: 0;
-        margin-top: 3px;
-    }
-}
-
-
-/* Add to your existing CSS */
-.no-print {
-    display: block; /* Show by default on screen */
-}
-
-@media print {
-    .no-print {
-        display: none !important; /* Hide when printing/PDF generation */
-    }
-}
-
-.pdf-download-container {
-    text-align: center;
-    margin: 10px auto;
-    max-width: 800px;
-    padding: 0 20px;
-}
-
-.pdf-download-btn {
-    padding: 10px 20px;
-    background-color: #661960;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: var(--body-font);
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.pdf-download-btn:hover {
-    background-color: #a82d7b;
-}
-
-/* Ensure the button container never appears in PDF */
-.pdf-download-container {
-    display: block;
-}
-
-@media print {
-    .pdf-download-container {
-        display: none !important;
-    }
-}
-
-
-
-/* Add these to your existing CSS */
-
-/* Mobile-specific profile adjustments */
-@media (max-width: 768px) {
-  .profile {
-    padding: 15px;
-    margin: 10px auto;
-  text-align: center;
-  display: flex;
+  .cv-item {
     flex-direction: column;
+    gap: 0.5rem;
   }
-  
-  .profile img {
-    width: 200px;
-    float: none;
-    margin: 0 auto 20px auto;
-    order: -1; /* Move image to top on mobile */
-  }
-  
-  .profile h1 {
-    margin: 0 0 10px 0;
-    text-align: center;
-  }
-  
-  .profile p {
+
+  .cv-right {
     text-align: left;
-    margin-top: 15px;
-}
-  
-
+  }
 }
 
-
-
-@media (max-width: 768px) {
-    #top-nav ul {
-        flex-direction: row; /* Ensure horizontal layout */
-    }
-    
-    #top-nav ul li {
-        margin: 0 8px; /* Tighter spacing on mobile */
-    }
-    
-    #top-nav a {
-        font-size: 14px; /* Slightly smaller text if needed */
-    }
+/* PDF Download Button */
+.pdf-download-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
 }
 
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--primary-color);
+  color: white !important;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
+.btn-primary:hover {
+  background-color: var(--primary-light);
+  transform: translateY(-1px);
+}
 
+/* ------------------------------------------------------------------
+   8. PUBLICATIONS & LISTS
+------------------------------------------------------------------ */
+.publication-list {
+  padding: 0;
+}
 
+.publication-list li {
+  background-color: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--primary-color);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
+}
 
+.publication-list li:hover {
+  transform: translateX(5px);
+  background-color: #fff;
+  box-shadow: var(--shadow-md);
+}
+
+/* ------------------------------------------------------------------
+   9. PHOTOGRAPHY GRID
+------------------------------------------------------------------ */
+.masonry-grid {
+  column-count: 3;
+  column-gap: 1.5rem;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.masonry-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.masonry-item:hover img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .masonry-grid {
+    column-count: 1;
+  }
+}
+
+/* ------------------------------------------------------------------
+   10. TOOLS / JUNK PAGE
+------------------------------------------------------------------ */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.tool-card {
+  background: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.tool-card:hover {
+  background: #fff;
+  border-color: var(--primary-light);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-5px);
+}
+
+.tool-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.tool-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.tool-desc {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.btn-tool {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(108, 25, 96, 0.3);
+}
+
+.btn-tool:hover {
+  box-shadow: 0 6px 20px rgba(108, 25, 96, 0.5);
+  color: white;
+}
+
+/* ------------------------------------------------------------------
+   11. ANIMATIONS
+------------------------------------------------------------------ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ------------------------------------------------------------------
+   12. PDF TOOLS STYLES
+------------------------------------------------------------------ */
+.tool-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.tool-header {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.tool-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.tool-header p {
+  opacity: 0.9;
+}
+
+.tool-content {
+  padding: 2rem;
+}
+
+/* Drop Zone */
+.drop-zone {
+  border: 3px dashed var(--primary-light);
+  border-radius: var(--radius-md);
+  padding: 3rem 1rem;
+  text-align: center;
+  background: var(--bg-secondary);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.drop-zone:hover,
+.drop-zone.dragover {
+  border-color: var(--primary-color);
+  background: #f0e6ed;
+  /* Light purple tint */
+  transform: translateY(-2px);
+}
+
+.drop-zone-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.drop-zone h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.drop-zone p {
+  color: var(--text-muted);
+}
+
+/* File List (Merger) */
+.file-list {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-bottom: 2rem;
+  min-height: 150px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.file-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.file-list::-webkit-scrollbar-thumb {
+  background-color: var(--primary-light);
+  border-radius: 10px;
+}
+
+.file-item {
+  background: white;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  cursor: move;
+}
+
+.file-item:hover {
+  transform: translateX(3px);
+  box-shadow: var(--shadow-md);
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  overflow: hidden;
+}
+
+.file-name {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.file-count {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+/* Button variants for tools */
+.btn-icon {
+  background: transparent;
+  border: 1px solid var(--primary-light);
+  color: var(--primary-color);
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1.2rem;
+}
+
+.btn-icon:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #1abc9c 0%, #16a085 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(26, 188, 156, 0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(26, 188, 156, 0.3);
+}
+
+.btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-main);
+  border: 1px solid #ddd;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-secondary:hover {
+  background: #eee;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+/* PDF Viewer (Splitter) */
+.viewer-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.page-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.canvas-container {
+  text-align: center;
+  margin-bottom: 2rem;
+  overflow: auto;
+  padding: 1rem;
+  background: #fdfdfd;
+  border: 1px solid #eee;
+  border-radius: var(--radius-md);
+}
+
+#pdf-canvas {
+  box-shadow: var(--shadow-md);
+  max-width: 100%;
+}
+
+.split-controls {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+}
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 0.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 1rem;
+  background: white;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.5rem;
+  border: 1px solid #eee;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  user-select: none;
+}
+
+.loading {
+  display: none;
+  text-align: center;
+  padding: 2.5rem;
+}
+
+.loading.active {
+  display: block;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 3rem;
+  font-style: italic;
+}
+
+.upload-area {
+  /* Inherit drop-zone styles */
+  border: 3px dashed var(--primary-light);
+  border-radius: var(--radius-md);
+  padding: 4rem 1rem;
+  text-align: center;
+  background: var(--bg-secondary);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.upload-area:hover,
+.upload-area.dragover {
+  border-color: var(--primary-color);
+  background: #f0e6ed;
+}
+
+.upload-icon {
+  font-size: 4rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* ------------------------------------------------------------------
+   13. PRINT MEDIA (for CV PDF generation)
+------------------------------------------------------------------ */
+@media print {
+
+  header,
+  footer,
+  .no-print,
+  .pdf-download-container {
+    display: none !important;
+  }
+
+  main {
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    background: white;
+    font-size: 12pt;
+  }
+
+  .cv-item {
+    break-inside: avoid;
+  }
+}
