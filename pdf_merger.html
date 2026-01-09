@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Merger | Prem Kumar</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=SF+Mono&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">home</a></li>
+                <li><a href="publications.html">publications</a></li>
+                <li><a href="cv.html">cv</a></li>
+                <li><a href="photography.html">photography</a></li>
+                <li><a href="junk.html" class="active">junk</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container" style="margin-bottom: 2rem;">
+            <a href="junk.html"
+                style="display: inline-flex; align-items: center; gap: 5px; color: var(--primary-color); font-weight: 500; margin-bottom: 1rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Tools
+            </a>
+        </div>
+
+        <div class="tool-container">
+            <div class="tool-header">
+                <h1>📄 PDF Merger</h1>
+                <p>Merge multiple PDF documents into a single file</p>
+            </div>
+
+            <div class="tool-content">
+                <div class="drop-zone" id="dropZone">
+                    <span class="drop-zone-icon">📁</span>
+                    <h3>Drop PDF files here</h3>
+                    <p>or click to browse</p>
+                </div>
+
+                <input type="file" id="fileInput" style="display: none;" accept=".pdf" multiple>
+
+                <div class="file-count" id="fileCount">
+                    <strong>0</strong> files selected
+                </div>
+
+                <div class="file-list" id="fileList">
+                    <div class="empty-state">
+                        No files added yet. Click ➕ to add files.
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-secondary" id="addBtn">
+                        ➕ Add More PDFs
+                    </button>
+                    <button class="btn-danger" id="clearBtn">
+                        🗑️ Clear All
+                    </button>
+                    <button class="btn-success" id="mergeBtn">
+                        ✨ Merge PDFs
+                    </button>
+                </div>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Merging your PDFs...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/pkprem26/" target="_blank" rel="noopener noreferrer"
+                class="social-icon">
+                <img src="images/linkedin_logo.svg" alt="LinkedIn">
+            </a>
+            <a href="https://github.com/astro-pkumar" target="_blank" rel="noopener noreferrer" class="social-icon">
+                <img src="images/github_logo.svg" alt="GitHub">
+            </a>
+            <a href="https://orcid.org/0009-0009-7182-2742" target="_blank" rel="noopener noreferrer"
+                class="social-icon">
+                <img src="images/orcid_logo.svg" alt="ORCID">
+            </a>
+            <a href="http://x.com/pkprem26" target="_blank" rel="noopener noreferrer" class="social-icon">
+                <img src="images/twitter_logo.svg" alt="Twitter">
+            </a>
+            <a href="mailto:prem.kumar@univie.ac.at" target="_blank" rel="noopener noreferrer" class="social-icon">
+                <img src="images/email_logo.svg" alt="Email">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const { PDFDocument } = PDFLib;
+
+        let pdfFiles = [];
+        let draggedIndex = null;
+
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+        const fileCount = document.getElementById('fileCount');
+        const addBtn = document.getElementById('addBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const mergeBtn = document.getElementById('mergeBtn');
+        const loading = document.getElementById('loading');
+
+        dropZone.addEventListener('click', () => fileInput.click());
+        addBtn.addEventListener('click', () => fileInput.click());
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            const files = Array.from(e.dataTransfer.files).filter(f => f.type === 'application/pdf');
+            addFiles(files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            addFiles(Array.from(e.target.files));
+            fileInput.value = '';
+        });
+
+        clearBtn.addEventListener('click', () => {
+            if (pdfFiles.length === 0) return;
+            if (confirm('Remove all files from the list?')) {
+                pdfFiles = [];
+                updateUI();
+            }
+        });
+
+        mergeBtn.addEventListener('click', mergePDFs);
+
+        function addFiles(files) {
+            files.forEach(file => {
+                if (!pdfFiles.find(f => f.name === file.name)) {
+                    pdfFiles.push(file);
+                }
+            });
+            updateUI();
+        }
+
+        function updateUI() {
+            fileCount.innerHTML = `<strong>${pdfFiles.length}</strong> file${pdfFiles.length !== 1 ? 's' : ''} selected`;
+
+            if (pdfFiles.length === 0) {
+                fileList.innerHTML = '<div class="empty-state"> No files added yet. Click ➕ to add files.</div>';
+                return;
+            }
+
+            fileList.innerHTML = pdfFiles.map((file, index) => `
+                <div class="file-item" draggable="true" data-index="${index}">
+                    <div class="file-info">
+                        <span class="file-icon">📄</span>
+                        <span class="file-name">${file.name}</span>
+                    </div>
+                    <div class="file-actions">
+                        <button class="btn-icon" onclick="moveUp(${index})" title="Move Up">⬆️</button>
+                        <button class="btn-icon" onclick="moveDown(${index})" title="Move Down">⬇️</button>
+                        <button class="btn-danger" onclick="removeFile(${index})" title="Remove">✕</button>
+                    </div>
+                </div>
+            `).join('');
+
+            addDragListeners();
+        }
+
+        function addDragListeners() {
+            const items = document.querySelectorAll('.file-item');
+            items.forEach(item => {
+                item.addEventListener('dragstart', handleDragStart);
+                item.addEventListener('dragover', handleDragOver);
+                item.addEventListener('drop', handleDrop);
+                item.addEventListener('dragend', handleDragEnd);
+            });
+        }
+
+        function handleDragStart(e) {
+            draggedIndex = parseInt(e.target.closest('.file-item').dataset.index);
+            e.dataTransfer.effectAllowed = 'move';
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const dropIndex = parseInt(e.target.closest('.file-item').dataset.index);
+
+            if (draggedIndex !== dropIndex) {
+                const draggedFile = pdfFiles[draggedIndex];
+                pdfFiles.splice(draggedIndex, 1);
+                pdfFiles.splice(dropIndex, 0, draggedFile);
+                updateUI();
+            }
+        }
+
+        function handleDragEnd() {
+            draggedIndex = null;
+        }
+
+        function removeFile(index) {
+            pdfFiles.splice(index, 1);
+            updateUI();
+        }
+
+        function moveUp(index) {
+            if (index === 0) return;
+            [pdfFiles[index], pdfFiles[index - 1]] = [pdfFiles[index - 1], pdfFiles[index]];
+            updateUI();
+        }
+
+        function moveDown(index) {
+            if (index === pdfFiles.length - 1) return;
+            [pdfFiles[index], pdfFiles[index + 1]] = [pdfFiles[index + 1], pdfFiles[index]];
+            updateUI();
+        }
+
+        async function mergePDFs() {
+            if (pdfFiles.length === 0) {
+                alert('Please add PDF files to merge.');
+                return;
+            }
+
+            loading.classList.add('active');
+
+            try {
+                const mergedPdf = await PDFDocument.create();
+
+                for (const file of pdfFiles) {
+                    const arrayBuffer = await file.arrayBuffer();
+                    const pdf = await PDFDocument.load(arrayBuffer);
+                    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+                    copiedPages.forEach((page) => mergedPdf.addPage(page));
+                }
+
+                const mergedPdfBytes = await mergedPdf.save();
+                const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
+                const url = URL.createObjectURL(blob);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'merged.pdf';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                alert(`✅ Success!\n\nMerged ${pdfFiles.length} PDF files successfully!`);
+            } catch (error) {
+                alert(`❌ Error merging PDFs:\n${error.message}`);
+            } finally {
+                loading.classList.remove('active');
+            }
+        }
+
+        updateUI();
+    </script>
+</body>
+
+</html>
